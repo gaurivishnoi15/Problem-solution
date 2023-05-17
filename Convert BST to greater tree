@@ -1,0 +1,13 @@
+class Solution:
+    def convertBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if root:
+            self.helper(root)
+        return root 
+    def helper(self,root,previous=0):
+        if root.right:
+            root.val+=self.helper(root.right,previous)
+        else:
+            root.val+=previous
+        if root.left:
+            return self.helper(root.left,root.val)
+        return root.val
