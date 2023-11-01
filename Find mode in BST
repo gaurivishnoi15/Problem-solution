@@ -1,0 +1,17 @@
+class Solution:
+    def findMode(self, root: Optional[TreeNode]) -> List[int]:
+        d={}
+        stk=[]
+        while stk or root:
+            while root:
+                stk.append(root)
+                root=root.left
+            root=stk.pop()
+            d[root.val]=d.get(root.val,0)+1
+            root=root.right
+        a=[]
+        mx=max(d.values())
+        for i in d:
+            if d[i]==mx:
+                a.append(i)
+        return a
