@@ -1,0 +1,14 @@
+class Solution:
+    def getWinner(self, arr: List[int], k: int) -> int:
+        win_count = 0
+        for i in range(len(arr)-1):
+            if arr[0] > arr[1]:
+                win_count+=1
+                arr.pop(1)
+            else:
+                win_count=1
+                arr.pop(0)
+            if win_count == k:
+                break
+        return arr[0]
+        
