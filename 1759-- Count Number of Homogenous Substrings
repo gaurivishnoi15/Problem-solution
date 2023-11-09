@@ -1,0 +1,14 @@
+class Solution:
+    def countHomogenous(self, s: str) -> int:
+        ans = 0
+        mod = 10 ** 9 + 7
+        i =0
+        while i < len(s):
+            count = 0
+            curr_char = s[i]
+            while i < len(s) and s[i] == curr_char:
+                count=count+1
+                i=i+1
+            ans=ans+((count*(count+1))//2)%mod
+        return ans%mod
+        
