@@ -1,0 +1,13 @@
+class Solution:
+    def sortVowels(self, s: str) -> str:
+        index = []
+        character = []
+        for idx, c in enumerate(s):
+            if c in ('aiueoAIUEO'):
+                index.append(idx)
+                character.append(c)
+        character.sort()
+        for idx, c in zip(index, character):
+            s = s[:idx] + c + s[idx+1:]
+
+        return s
