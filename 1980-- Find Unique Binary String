@@ -1,0 +1,21 @@
+class Solution:
+    def findDifferentBinaryString(self, nums: List[str]) -> str:
+        uniques = set()
+        nums_len = len(nums)
+        n = len(nums[0])
+
+        for num in nums:
+            uniques.add(num)
+        
+        check_this = "0" * n
+        if check_this not in uniques:
+            return check_this
+
+        for value in range(1, 2*n):
+            check_this = bin(value)[2:]
+            check_this = "0" * (n - (math.floor(math.log(value, 2)) + 1)) + check_this
+            if check_this not in uniques:
+                return check_this
+        
+        return "none found!"
+        
