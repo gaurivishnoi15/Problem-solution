@@ -1,0 +1,26 @@
+
+''' structure of node:
+
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+
+'''
+
+class Solution:
+    def findIntersection(self,head1,head2):
+        head=Node(None)
+        cur=head
+        while head1 and head2:
+            if head1.data<head2.data:
+                head1=head1.next
+            elif head1.data>head2.data:
+                head2=head2.next
+            else:
+                cur.next=head1
+                cur=cur.next
+                head1=head1.next
+                head2=head2.next
+        cur.next=None
+        return head.next
