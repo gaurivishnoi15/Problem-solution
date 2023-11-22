@@ -1,0 +1,24 @@
+'''
+class Node:
+    def _init_(self, val):
+        self.right = None
+        self.data = val
+        self.left = None
+'''
+
+class Solution:
+    #Function to check if two trees are identical.
+    def isIdentical(self,root1, root2):
+        from collections import deque
+        q=[(root1,root2,)]
+        while q:
+            nq=[]
+            for cur1,cur2 in q:
+                if not cur1 and not cur2:
+                    continue
+                elif (not cur1 and cur2) or (cur1 and not cur2) or (cur1 and cur2 and cur1.data!=cur2.data):
+                    return False
+                else:
+                    nq.extend([(cur1.left,cur2.left,),((cur1.right,cur2.right,))])
+            q=nq
+        return True
