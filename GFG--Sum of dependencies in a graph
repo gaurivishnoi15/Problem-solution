@@ -1,0 +1,13 @@
+#User function Template for python3
+
+class Solution:
+    def sumOfDependencies(self,adj,V):
+        di = {}
+        for i in range(0,V):
+            for j in a[i]:
+                if i not in di:
+                    di[i] = 1
+                else:
+                    di[i] += 1
+        return sum(di.values())
+        #code here
