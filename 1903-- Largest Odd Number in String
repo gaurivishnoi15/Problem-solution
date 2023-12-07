@@ -1,0 +1,11 @@
+class Solution:
+    def largestOddNumber(self, num: str) -> str:
+        n = len(num)
+        ans = ""
+        for i in range(n - 1, -1, -1):
+            digit = int(num[i])
+            if digit % 2 != 0:
+                ans = num[:i + 1]
+                break
+
+        return ans
