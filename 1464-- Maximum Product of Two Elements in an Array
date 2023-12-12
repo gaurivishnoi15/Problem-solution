@@ -1,0 +1,9 @@
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        t = []
+        for i in range(len(nums)): 
+            t.append(min(nums))
+            nums[nums.index(min(nums))]=max(nums)
+        return (t[-1]-1)*(t[-2]-1)
+
+        
