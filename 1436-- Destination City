@@ -1,0 +1,8 @@
+class Solution:
+    def destCity(self, paths: List[List[str]]) -> str:
+        source = set()
+        for city in paths:
+            source.add(city[0]) 
+        for city in paths:
+            if city[1] not in source:
+                return city[1]
