@@ -1,0 +1,12 @@
+class Solution:
+    def buyChoco(self, prices: List[int], money: int) -> int:
+        m=[]
+        for i in range(len(prices)):
+            if(prices[i]<money):
+                m.append(prices[i])
+        m.sort()
+        if(len(m)>=2):
+            if(money-(m[1]+m[0])>=0):
+                return (money-(m[1]+m[0]))
+        return money
+        
