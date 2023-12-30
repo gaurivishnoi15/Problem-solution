@@ -1,0 +1,13 @@
+class Solution:
+    def makeEqual(self, words: List[str]) -> bool:
+        lst=[0]*26
+        for i in words:
+            for j in i:
+                lst[ord(j)-97]+=1
+        print(lst)
+        for i in lst:
+            if i==0:
+                continue
+            elif i%len(words)!=0:
+                return False
+        return True
