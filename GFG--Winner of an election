@@ -1,0 +1,12 @@
+from collections import Counter
+class Solution:
+    
+    #Complete this function
+    
+    #Function to return the name of candidate that received maximum votes.
+    def winner(self,arr,n):
+        data = dict(Counter(arr))
+        winner = max(data.values())
+        for element in sorted(data.keys()):
+            if data[element] == winner:
+                return [element , winner]
