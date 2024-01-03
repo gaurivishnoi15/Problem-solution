@@ -1,0 +1,17 @@
+class Solution:
+    def numberOfBeams(self, bank: List[str]) -> int:
+        sum=[]
+        for i in range(len(bank)):
+            tot=0
+            a=[char for char in bank[i]]
+            for j in range(len(a)):
+                if a[j]=='1':
+                    tot+=1
+            sum.append(tot)
+        remove=[item for item in sum if item!=0]   
+        mul=0
+        if len(remove)>0:
+            for i in range(len(remove)-1):
+                mul+=remove[i]*remove[i+1]
+        return mul
+        
