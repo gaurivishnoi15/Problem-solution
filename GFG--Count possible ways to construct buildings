@@ -1,0 +1,11 @@
+class Solution:
+	def TotalWays(self, N):
+	    mod=int(1e9+7)
+        dp=[1]*(N+1)
+        dp[1]=2
+        for i in range(2,N+1):
+            dp[i]=(dp[i-1]+dp[i-2])%(mod)
+        result =dp[N]*dp[N]
+        result%=mod
+        return (result)
+		# Code here
