@@ -1,0 +1,21 @@
+class Solution:
+    def search(self, pat, txt):
+        indices = []
+        n = len(txt)
+        m = len(pat)
+        
+        for i in range(n - m + 1):
+            j = 0
+            while j < m:
+                if txt[i+j] != pat[j]:
+                    break
+                j += 1
+            
+            if j == m:
+                indices.append(i+1)
+        
+        if len(indices) == 0:
+            return [-1]
+        else:
+            return indices
+        # code here
