@@ -1,0 +1,13 @@
+class Solution:
+    def findErrorNums(self, nums: List[int]) -> List[int]:
+        nums.sort()
+        a=Counter(nums)
+        b=[]
+        for key,value in a.items():
+            if value>1:
+                b.append(key)
+        for i in range(1,len(nums)+1):
+            if i not in nums:
+                b.append(i)
+        return b
+        
