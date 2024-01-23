@@ -1,0 +1,24 @@
+from heapq import heappush as hpush, heappop as hpop
+
+class Solution:
+    def findOrder(self, n, m, prerequisites):
+        a=[[] for k in range(n)]
+        indeg=[0] * n
+        for i,j in prerequisites:
+            a[j].append(i)
+            indeg[i]+=1
+        h=[]
+        for i in range(n):
+            if indeg[i]==0:
+                hpush(h,i)
+        r=[]
+        while h:
+            node=hpop(h)
+            r.append(node)
+            for j in a[node]:
+                indeg[j]-=1
+                if indeg[j]==0:
+                    hpush(h,j)
+        if len(r)!=n:
+            return []
+        return r
