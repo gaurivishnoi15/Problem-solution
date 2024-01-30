@@ -1,0 +1,24 @@
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        def is_number(x):
+            try:
+                s = float(x)
+                return True
+            except ValueError:
+                return False
+        num_stack = []
+        operator = {'+' : lambda a, b : a + b, 
+                    '-' : lambda a, b : a - b,
+                    '*' : lambda a, b : a * b,
+                    '/' : lambda a, b : int(a / b)}
+
+        for token in tokens:
+            if is_number(token):    
+                num_stack.append(int(token)) 
+            else:
+                a = num_stack.pop() 
+                b = num_stack.pop() 
+                res = operator[token](b, a)
+                num_stack.append(res)  
+        return num_stack[-1]    
+        
