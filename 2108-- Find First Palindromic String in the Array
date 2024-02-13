@@ -1,0 +1,9 @@
+class Solution:
+    def firstPalindrome(self, words: List[str]) -> str:
+        def isPol(s):
+            return s==s[::-1]
+
+        for word in words:
+            if isPol(word):
+                return word
+        return ""
