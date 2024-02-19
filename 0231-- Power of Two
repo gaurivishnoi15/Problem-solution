@@ -1,0 +1,12 @@
+import math
+class Solution:
+    def isPowerOfTwo(self, n: int) -> bool:
+        if n==1:
+            return True
+        elif n<=0:
+            return False
+        x = (math.log10(math.fabs(n))/math.log10(2))
+        if x%1==0:
+            return True
+        return False
+        
