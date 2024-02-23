@@ -1,0 +1,26 @@
+class Solution:
+    def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
+        dp, visited = [[0]*n for _ in range(k+1)], [0]*n
+        adj = defaultdict(list)
+        for f in flights:
+            adj[f[0]].append((f[1], f[2]))
+        for l in adj.keys():
+            adj[l].sort(key = lambda x:x[1])
+        visited[src] = 1
+        def recur(curr, k):
+            res = sys.maxsize
+            if curr==dst:return 0
+            if k<0:return res
+            if dp[k][curr]:return dp[k][curr]
+            for i, cost in adj[curr]:
+                if not visited[i]:
+                    visited[i] = 1
+                    res = min(res, cost + recur(i, k-1))
+                    visited[i] = 0
+            dp[k][curr] = res
+            return res
+        r = recur(src, k)
+        if r==sys.maxsize:return -1
+        else:
+            return r
+        
