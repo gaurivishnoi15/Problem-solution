@@ -1,0 +1,11 @@
+class Solution:
+    def search(self, pattern, text):
+        pattern_length = len(pattern)
+        text_length = len(text)
+        indexes = []
+    
+        for i in range(text_length - pattern_length + 1):
+            if text[i:i+pattern_length] == pattern:
+                indexes.append(i + 1)  
+        return indexes
+        # code here
