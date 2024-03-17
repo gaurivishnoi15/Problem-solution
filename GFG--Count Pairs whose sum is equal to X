@@ -1,0 +1,30 @@
+
+'''
+class Node:
+    def __init__(self, data):   # data -> value stored in node
+        self.data = data
+        self.next = None
+'''
+class Solution:
+    def countPair(self, head1, head2, n1, n2, x):
+        '''
+        head1:  head of linkedList 1
+        head2:  head of linkedList 2
+        n1:  len of  linkedList 1
+        n2:  len of linkedList 1
+        x:   given sum
+        '''
+        from bisect import bisect_left
+        v = []
+        while head2:
+            v.append(head2.data)
+            head2 = head2.next
+        v.sort()
+        ans = 0
+        while head1:
+            y = x-head1.data
+            i = bisect_left(v, y)
+            if i < len(v) and v[i] == y:
+                ans += 1
+            head1 = head1.next
+        return ans
