@@ -1,0 +1,34 @@
+
+'''
+# Node Class:
+class Node:
+    def __init__(self,val):
+        self.data = val
+        self.left = None
+        self.right = None
+'''
+
+class Solution:
+    #Complete the function below
+    def diagonalSum(self, root):
+        #:param root: root of the given tree.
+        res = []
+        
+        def dfs(root,index):
+            if not root:
+                return
+            
+            if len(res) == index:
+                res.append(root.data)
+                
+            else:
+                res[index] += root.data
+                
+            dfs(root.left,index+1)
+            dfs(root.right,index)
+            
+        dfs(root,0)
+        
+        return res
+        
+        #code here
