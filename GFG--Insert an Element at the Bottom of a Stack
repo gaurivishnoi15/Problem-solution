@@ -1,0 +1,7 @@
+class Solution:
+    def insertAtBottom(self,st,x):
+        # code here
+        arr=[]
+        arr.append(x)
+        arr.extend(st)
+        return arr
