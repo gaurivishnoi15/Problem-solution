@@ -1,0 +1,16 @@
+class Solution:
+	def NBitBinary(self, n):
+		# code here
+		ans = []
+        def solve(temp,ln,zeros,ones):
+            if ln == n:
+                if ones>=zeros:
+                    ans.append(temp)
+                return
+            if ones>=zeros:
+                solve(temp+"1",ln+1,zeros,ones+1)
+                solve(temp+"0",ln+1,zeros+1,ones)
+         
+        solve("1",1,0,1)
+        ans.sort(reverse=True)
+        return ans
